@@ -753,8 +753,8 @@ NS_ASSUME_NONNULL_END
     self.heightInPoints = [[self.preferences objectForKey:kKayokoPreferenceKeyHeightInPoints] doubleValue];
     self.preferredHistoryRowHeight =
         [[self.preferences objectForKey:kKayokoPreferenceKeyHistoryRowHeight] doubleValue];
-    self.preferredHistoryRowHeight = MAX(round(self.preferredHistoryRowHeight),
-                                           kKayokoPreferenceKeyHistoryRowHeightDefaultValue);
+    self.preferredHistoryRowHeight = MIN(MAX(round(self.preferredHistoryRowHeight), 0),
+                                         kKayokoPreferenceKeyHistoryRowHeightDefaultValue);
     self.overlayWindowLevelMode =
         [[self.preferences objectForKey:kKayokoPreferenceKeyOverlayWindowLevelMode] unsignedIntegerValue];
     if (self.overlayWindowLevelMode != kKayokoOverlayWindowLevelModeCustom &&

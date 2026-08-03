@@ -23,6 +23,7 @@ jobs:
     runs-on: macos-14
     strategy:
       fail-fast: false
+      max-parallel: 1
       matrix:
         variant: [rootful, rootless, roothide]
 
@@ -48,6 +49,8 @@ jobs:
           brew install ldid xz
           echo "$(brew --prefix)/bin" >> "$GITHUB_PATH"
           echo "${THEOS}/bin" >> "$GITHUB_PATH"
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
 
       - name: Build ${{ matrix.variant }} package
         run: |

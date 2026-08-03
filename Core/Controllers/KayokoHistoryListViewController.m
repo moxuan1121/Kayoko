@@ -640,6 +640,7 @@ NS_ASSUME_NONNULL_END
         [[KayokoTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                            content:content
                                    reuseIdentifier:[KayokoTableViewCell reuseIdentifierForContent:content]];
+    [cell setContentScale:[[self tableView] contentScale]];
     [self loadThumbnailForItem:item intoCell:cell];
 
     if (addsPreviewGesture) {
@@ -685,6 +686,7 @@ NS_ASSUME_NONNULL_END
                                                           action:@selector(handleLongPressGestureRecognizer:)];
         [cell addGestureRecognizer:gesture];
     }
+    [cell setContentScale:[[self tableView] contentScale]];
     [self loadThumbnailForItem:item intoCell:cell];
     [cell setHidden:[[self presentationHiddenItemContent] isEqualToString:[item content]]];
     return cell;

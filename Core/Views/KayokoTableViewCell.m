@@ -239,6 +239,19 @@ static NSUInteger const kKayokoTableViewCellMaximumPreviewLineCount = 3;
     [[self contentImageView] setBackgroundColor:[UIColor tertiarySystemFillColor]];
 }
 
+- (void)setContentScale:(CGFloat)contentScale {
+    CGFloat scale = MIN(MAX(contentScale, 0.5), 1.0);
+    CGAffineTransform transform = CGAffineTransformMakeScale(scale, scale);
+    // The table row itself is shortened by the list view. Scale every visual element as well so
+    // compact rows keep their text and icons legible instead of clipping the normal-size layout.
+    [[self iconImageView] setTransform:transform];
+    [[self headerLabel] setTransform:transform];
+    [[self contentLabel] setTransform:transform];
+    [[self detailLabel] setTransform:transform];
+    [[self contentImageView] setTransform:transform];
+    [[self tagDotView] setTransform:transform];
+}
+
 - (void)applyDetailContent:(KayokoTableViewCellContent *)content {
     NSAttributedString *attributedDetailText = [content attributedDetailText];
     if (!attributedDetailText) {

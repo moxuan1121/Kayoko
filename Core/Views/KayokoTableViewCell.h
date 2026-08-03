@@ -28,6 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (CGSize)contentImageThumbnailSize;
 - (void)applyDetailContent:(KayokoTableViewCellContent *)content;
 - (void)applyContent:(KayokoTableViewCellContent *)content;
+- (void)setContentScale:(CGFloat)contentScale;
 - (void)setContentImage:(nullable UIImage *)image forImageName:(NSString *)imageName;
 
 @end

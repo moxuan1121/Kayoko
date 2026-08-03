@@ -10,6 +10,7 @@
 #import "KayokoPasteboardManager.h"
 
 static CGFloat const kKayokoHistoryListViewBaseRowHeight = 65;
+static CGFloat const kKayokoHistoryListViewMinimumContentScale = 0.5;
 static CGFloat const kKayokoHistoryListViewAdditionalPreviewLineHeight = 18;
 static CGFloat const kKayokoHistoryListViewDetailLineHeight = 15;
 static NSUInteger const kKayokoHistoryListViewMaximumPreviewLineCount = 3;
@@ -442,7 +443,7 @@ NS_ASSUME_NONNULL_END
 }
 
 - (void)setPreferredRowHeight:(CGFloat)preferredRowHeight {
-    _preferredRowHeight = MAX(round(preferredRowHeight), kKayokoHistoryListViewBaseRowHeight);
+    _preferredRowHeight = MIN(MAX(round(preferredRowHeight), 0), kKayokoHistoryListViewBaseRowHeight);
     [self updateRowHeightForCurrentDisplayOptions];
     [self reloadData];
 }
@@ -453,7 +454,10 @@ NS_ASSUME_NONNULL_END
     CGFloat contentHeight = kKayokoHistoryListViewBaseRowHeight +
                             ([self previewLineCount] - 1) * kKayokoHistoryListViewAdditionalPreviewLineHeight +
                             detailHeight;
-    [self setRowHeight:MAX(contentHeight, [self preferredRowHeight])];
+    _contentScale = kKayokoHistoryListViewMinimumContentScale +
+                    (1.0 - kKayokoHistoryListViewMinimumContentScale) *
+                        ([self preferredRowHeight] / kKayokoHistoryListViewBaseRowHeight);
+    [self setRowHeight:round(contentHeight * [self contentScale])];
 }
 
 @end
