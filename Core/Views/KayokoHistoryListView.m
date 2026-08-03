@@ -441,12 +441,19 @@ NS_ASSUME_NONNULL_END
     [self reloadData];
 }
 
+- (void)setPreferredRowHeight:(CGFloat)preferredRowHeight {
+    _preferredRowHeight = MAX(round(preferredRowHeight), kKayokoHistoryListViewBaseRowHeight);
+    [self updateRowHeightForCurrentDisplayOptions];
+    [self reloadData];
+}
+
 - (void)updateRowHeightForCurrentDisplayOptions {
     CGFloat detailHeight =
         [self itemDetailsMode] == kKayokoItemDetailsModeAll ? kKayokoHistoryListViewDetailLineHeight : 0;
-    [self setRowHeight:kKayokoHistoryListViewBaseRowHeight +
-                       ([self previewLineCount] - 1) * kKayokoHistoryListViewAdditionalPreviewLineHeight +
-                       detailHeight];
+    CGFloat contentHeight = kKayokoHistoryListViewBaseRowHeight +
+                            ([self previewLineCount] - 1) * kKayokoHistoryListViewAdditionalPreviewLineHeight +
+                            detailHeight;
+    [self setRowHeight:MAX(contentHeight, [self preferredRowHeight])];
 }
 
 @end

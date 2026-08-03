@@ -19,7 +19,7 @@
 			<key>headerSubtitle</key>
 			<string>Feature-rich clipboard manager for iOS.</string>
 			<key>detail</key>
-			<string>v4.7.1</string>
+			<string>v4.7.3</string>
 			<key>height</key>
 			<integer>92</integer>
 		</dict>
@@ -262,7 +262,39 @@
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
-			<string>Height (Points)</string>
+			<string>Content Row Height</string>
+			<key>footerText</key>
+			<string>Adjusts the height of every clipboard and favorites item.</string>
+		</dict>
+		<dict>
+			<key>cellClass</key>
+			<string>KayokoSliderCell</string>
+			<key>default</key>
+			<real>65</real>
+			<key>defaults</key>
+			<string>com.mlgm.kayoko.preferences</string>
+			<key>key</key>
+			<string>HistoryRowHeight</string>
+			<key>min</key>
+			<real>65</real>
+			<key>max</key>
+			<real>180</real>
+			<key>showValue</key>
+			<true/>
+			<key>isContinuous</key>
+			<true/>
+			<key>isSegmented</key>
+			<false/>
+			<key>valueLabelWidth</key>
+			<integer>44</integer>
+			<key>PostNotification</key>
+			<string>com.mlgm.kayoko.preferences.reload</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Panel Height</string>
 		</dict>
 		<dict>
 			<key>cellClass</key>

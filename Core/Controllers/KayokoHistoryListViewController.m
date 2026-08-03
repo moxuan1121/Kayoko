@@ -115,6 +115,14 @@ NS_ASSUME_NONNULL_END
     return [[self tableView] itemDetailsMode];
 }
 
+- (void)setPreferredRowHeight:(CGFloat)preferredRowHeight {
+    [[self tableView] setPreferredRowHeight:preferredRowHeight];
+}
+
+- (CGFloat)preferredRowHeight {
+    return [[self tableView] preferredRowHeight];
+}
+
 - (void)refreshSearchPlaceholder {
     BOOL showsNoSearchResults = [self hasActiveSearch] && ![self isBrowsingSearchTokens] && [[self items] count] > 0 &&
                                 [[self displayedItems] count] == 0;

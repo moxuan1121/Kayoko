@@ -204,6 +204,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, assign) NSUInteger previewLineCount;
 @property(nonatomic, assign) KayokoItemDetailsMode itemDetailsMode;
 @property(nonatomic, assign) CGFloat heightInPoints;
+@property(nonatomic, assign) CGFloat preferredHistoryRowHeight;
 @property(nonatomic, assign) KayokoOverlayWindowLevelMode overlayWindowLevelMode;
 @property(nonatomic, assign) CGFloat customOverlayWindowLevel;
 
@@ -250,6 +251,7 @@ NS_ASSUME_NONNULL_END
         _previewLineCount = 1;
         _itemDetailsMode = kKayokoPreferenceKeyItemDetailsModeDefaultValue;
         _heightInPoints = 420;
+        _preferredHistoryRowHeight = kKayokoPreferenceKeyHistoryRowHeightDefaultValue;
         _activePresentationMode = KayokoPanelPresentationModePortraitDrawer;
         _pasteSuppressionState = [[KayokoPasteSuppressionState alloc] init];
     }
@@ -621,6 +623,9 @@ NS_ASSUME_NONNULL_END
     if ([self.mainViewController itemDetailsMode] != self.itemDetailsMode) {
         [self.mainViewController setItemDetailsMode:self.itemDetailsMode];
     }
+    if (fabs([self.mainViewController preferredHistoryRowHeight] - self.preferredHistoryRowHeight) > 0.5) {
+        [self.mainViewController setPreferredHistoryRowHeight:self.preferredHistoryRowHeight];
+    }
     if ([self.mainViewController initialViewMode] != self.initialViewMode) {
         [self.mainViewController setInitialViewMode:self.initialViewMode];
     }
@@ -685,6 +690,7 @@ NS_ASSUME_NONNULL_END
         kKayokoPreferenceKeyPreviewLineCount : @(kKayokoPreferenceKeyPreviewLineCountDefaultValue),
         kKayokoPreferenceKeyItemDetailsMode : @(kKayokoPreferenceKeyItemDetailsModeDefaultValue),
         kKayokoPreferenceKeyHeightInPoints : @(kKayokoPreferenceKeyHeightInPointsDefaultValue),
+        kKayokoPreferenceKeyHistoryRowHeight : @(kKayokoPreferenceKeyHistoryRowHeightDefaultValue),
         kKayokoPreferenceKeyOverlayWindowLevelMode : @(kKayokoPreferenceKeyOverlayWindowLevelModeDefaultValue),
         kKayokoPreferenceKeyOverlayWindowLevel : @(kKayokoPreferenceKeyOverlayWindowLevelDefaultValue),
     }];
@@ -745,6 +751,10 @@ NS_ASSUME_NONNULL_END
         self.itemDetailsMode = kKayokoPreferenceKeyItemDetailsModeDefaultValue;
     }
     self.heightInPoints = [[self.preferences objectForKey:kKayokoPreferenceKeyHeightInPoints] doubleValue];
+    self.preferredHistoryRowHeight =
+        [[self.preferences objectForKey:kKayokoPreferenceKeyHistoryRowHeight] doubleValue];
+    self.preferredHistoryRowHeight = MAX(round(self.preferredHistoryRowHeight),
+                                           kKayokoPreferenceKeyHistoryRowHeightDefaultValue);
     self.overlayWindowLevelMode =
         [[self.preferences objectForKey:kKayokoPreferenceKeyOverlayWindowLevelMode] unsignedIntegerValue];
     if (self.overlayWindowLevelMode != kKayokoOverlayWindowLevelModeCustom &&
