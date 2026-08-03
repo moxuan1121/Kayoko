@@ -311,12 +311,6 @@ NS_ASSUME_NONNULL_END
     [[self favoritesListViewController] setItemDetailsMode:itemDetailsMode];
 }
 
-- (void)setPreferredHistoryRowHeight:(CGFloat)preferredHistoryRowHeight {
-    _preferredHistoryRowHeight = preferredHistoryRowHeight;
-    [[self historyListViewController] setPreferredRowHeight:preferredHistoryRowHeight];
-    [[self favoritesListViewController] setPreferredRowHeight:preferredHistoryRowHeight];
-}
-
 - (void)setClearButtonMode:(KayokoClearButtonMode)clearButtonMode {
     if (clearButtonMode != kKayokoClearButtonModeOff && clearButtonMode != kKayokoClearButtonModeHistoryOnly &&
         clearButtonMode != kKayokoClearButtonModeAlways) {

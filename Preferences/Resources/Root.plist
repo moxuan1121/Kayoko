@@ -262,39 +262,7 @@
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
-			<string>内容行大小</string>
-			<key>footerText</key>
-			<string>调整剪贴板和收藏夹中每条记录的大小。65 为默认大小；数值越低，行、图标和文字会同步缩小。</string>
-		</dict>
-		<dict>
-			<key>cellClass</key>
-			<string>KayokoSliderCell</string>
-			<key>default</key>
-			<real>65</real>
-			<key>defaults</key>
-			<string>com.mlgm.kayoko.preferences</string>
-			<key>key</key>
-			<string>HistoryRowHeight</string>
-			<key>min</key>
-			<real>0</real>
-			<key>max</key>
-			<real>65</real>
-			<key>showValue</key>
-			<true/>
-			<key>isContinuous</key>
-			<true/>
-			<key>isSegmented</key>
-			<false/>
-			<key>valueLabelWidth</key>
-			<integer>44</integer>
-			<key>PostNotification</key>
-			<string>com.mlgm.kayoko.preferences.reload</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>label</key>
-			<string>Panel Height</string>
+			<string>Height (Points)</string>
 		</dict>
 		<dict>
 			<key>cellClass</key>

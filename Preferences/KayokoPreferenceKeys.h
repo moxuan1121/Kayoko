@@ -80,7 +80,6 @@ static NSString *const kKayokoPreferenceKeyPlayHapticFeedback = @"PlayHapticFeed
 static NSString *const kKayokoPreferenceKeyPreviewLineCount = @"PreviewLineCount";
 static NSString *const kKayokoPreferenceKeyItemDetailsMode = @"ItemDetailsMode";
 static NSString *const kKayokoPreferenceKeyHeightInPoints = @"HeightInPoints";
-static NSString *const kKayokoPreferenceKeyHistoryRowHeight = @"HistoryRowHeight";
 static NSString *const kKayokoPreferenceKeyOverlayWindowLevelMode = @"OverlayWindowLevelMode";
 static NSString *const kKayokoPreferenceKeyOverlayWindowLevel = @"OverlayWindowLevel";
 static NSString *const kKayokoPreferenceKeyFavoritesFilterPanelVisible = @"FavoritesFilterPanelVisible";
@@ -114,7 +113,6 @@ static BOOL const kKayokoPreferenceKeyPlayHapticFeedbackDefaultValue = YES;
 static NSUInteger const kKayokoPreferenceKeyPreviewLineCountDefaultValue = 1;
 static KayokoItemDetailsMode const kKayokoPreferenceKeyItemDetailsModeDefaultValue = kKayokoItemDetailsModeImagesOnly;
 static CGFloat const kKayokoPreferenceKeyHeightInPointsDefaultValue = 420;
-static CGFloat const kKayokoPreferenceKeyHistoryRowHeightDefaultValue = 65;
 static KayokoOverlayWindowLevelMode const kKayokoPreferenceKeyOverlayWindowLevelModeDefaultValue =
     kKayokoOverlayWindowLevelModeCustom;
 static CGFloat const kKayokoPreferenceKeyOverlayWindowLevelDefaultValue = 998;
